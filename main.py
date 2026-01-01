@@ -1,5 +1,7 @@
-from nesterlnvn import print_lol
+from perf.execution_time import timer
 
-the_list = ["xin","chao",["toi", "ten",["la","Long"]],"toi",["den", "tu"],"bac giang"]
+@timer
+def task():
+    print("Hello")
 
-print_lol(the_list)
+task()
