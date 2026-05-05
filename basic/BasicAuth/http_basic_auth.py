@@ -19,7 +19,7 @@ def protected_resource():
     auth = request.authorization
     if not auth or not check_auth(auth.username, auth.password):
         return authenticate()
-    return "Hello, {}!".format(auth.username)
+    return f"Hello, {auth.username}!"
 
 if __name__ == '__main__':
     app.run()

@@ -45,7 +45,7 @@ def main():
 
         elif choice == "3":
             if tasks:
-                print("\n Select the task number to remove")
+                print("\nSelect the task number to remove")
                 for idx, task in enumerate(tasks, start=1):
                     print(f"{idx}. {task}")
                 try:

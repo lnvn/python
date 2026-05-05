@@ -7,6 +7,6 @@ def timer(func):
         start = time.perf_counter()
         result = func(*args, **kwargs)
         end = time.perf_counter()
-        print(f"Execution time: {start - end:.6f}")
+        print(f"Execution time: {end - start:.6f}s")
         return result
     return wrapper
