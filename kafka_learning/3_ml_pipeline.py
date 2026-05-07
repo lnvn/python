@@ -6,7 +6,7 @@ import random
 # Simulate raw sensor data producer
 def produce_sensor_data():
     producer = KafkaProducer(
-        bootstrap_servers=['localhost:9092'],
+        bootstrap_servers=['localhost:9092', 'localhost:9093'],
         value_serializer=lambda v: json.dumps(v).encode('utf-8')
     )
 
@@ -30,7 +30,7 @@ def produce_sensor_data():
 def transform_sensor_data():
     consumer = KafkaConsumer(
         'raw-sensor-data',
-        bootstrap_servers=['localhost:9092'],
+        bootstrap_servers=['localhost:9092', 'localhost:9093'],
         auto_offset_reset='earliest',
         group_id='transformer-group',
         value_deserializer=lambda m: json.loads(m.decode('utf-8')),
@@ -38,7 +38,7 @@ def transform_sensor_data():
     )
 
     producer = KafkaProducer(
-        bootstrap_servers=['localhost:9092'],
+        bootstrap_servers=['localhost:9092', 'localhost:9093'],
         value_serializer=lambda v: json.dumps(v).encode('utf-8')
     )
 
@@ -69,7 +69,7 @@ def transform_sensor_data():
 def consume_processed_data():
     consumer = KafkaConsumer(
         'processed-sensor-data',
-        bootstrap_servers=['localhost:9092'],
+        bootstrap_servers=['localhost:9092', 'localhost:9093'],
         auto_offset_reset='earliest',
         group_id='ml-model-group',
         value_deserializer=lambda m: json.loads(m.decode('utf-8')),

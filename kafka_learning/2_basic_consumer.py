@@ -4,7 +4,7 @@ from datetime import datetime
 
 consumer = KafkaConsumer(
     'events',
-    bootstrap_servers=['localhost:9092'],
+    bootstrap_servers=['localhost:9092', 'localhost:9093'],
     auto_offset_reset='earliest',  # Start from the beginning if no offset exists
     group_id='my-group',  # Consumer group for tracking offsets
     value_deserializer=lambda m: json.loads(m.decode('utf-8'))

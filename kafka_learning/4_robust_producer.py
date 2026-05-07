@@ -9,7 +9,7 @@ logger = logging.getLogger(__name__)
 
 
 class RobustProducer:
-    def __init__(self, bootstrap_servers=['localhost:9092']):
+    def __init__(self, bootstrap_servers=['localhost:9092', 'localhost:9093']):
         self.producer = KafkaProducer(
             bootstrap_servers=bootstrap_servers,
             value_serializer=lambda v: json.dumps(v).encode('utf-8'),
